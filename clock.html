@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Verificar Anagramas</title>
+  <script>
+    function areAnagrams(word1, word2) {
+      if (word1.length !== word2.length) {
+        return false; 
+      }
+      const charCount = {};
+      for (let char of word1) {
+        charCount[char] = charCount[char] ? charCount[char] + 1 : 1;
+      }
+      for (let char of word2) {
+        if (!charCount[char]) {
+          return false; 
+        }
+        charCount[char]--;
+      }
+      return true; 
+    }
+    function testFunction() {
+      const word1 = document.getElementById("word1").value;
+      const word2 = document.getElementById("word2").value;
+
+      const anagrams = areAnagrams(word1, word2);
+
+      if (anagrams) {
+        alert("As palavras são anagramas!");
+      } else {
+        alert("As palavras não são anagramas.");
+      }
+    }
+  </script>
+</head>
+<body>
+  <label for="word1">Palavra 1:</label>
+  <input type="text" id="word1">
+  <br>
+  <label for="word2">Palavra 2:</label>
+  <input type="text" id="word2">
+  <br>
+  <button onclick="testFunction()">Verificar Anagramas</button>
+</body>
+</html>

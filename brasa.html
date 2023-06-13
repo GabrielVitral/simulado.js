@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Verificar critérios da senha</title>
+  <script>
+    function checkPasswordCriteria(password) {
+      if (password.length < 8) {
+        return false;
+      }
+      if (!/[a-z]/.test(password)) {
+        return false;
+      }
+      if (!/[A-Z]/.test(password)) {
+        return false;
+      }
+
+      if (!/[0-9]/.test(password)) {
+        return false;
+      }
+
+      return true;
+    }
+
+    function testFunction() {
+      const password = document.getElementById("password").value;
+      const meetsCriteria = checkPasswordCriteria(password);
+
+      if (meetsCriteria) {
+        alert("A senha atende aos critérios!");
+      } else {
+        alert("A senha não atende aos critérios.");
+      }
+    }
+  </script>
+</head>
+<body>
+  <label for="password">Senha:</label>
+  <input type="password" id="password">
+  <button onclick="testFunction()">Verificar Senha</button>
+</body>
+</html>
+
